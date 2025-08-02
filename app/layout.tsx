@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import GameOfLifeCanvas from "@/components/GameOfLifeCanvas";
+
+import { ThemeProvider } from "@/app/theme-provider"
+
 import {
   Sheet,
   SheetContent,
@@ -10,6 +14,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,12 +54,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+    <link
+          rel="stylesheet" precedence="default"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ paddingTop: '40px' }}
       >
-
+        <ThemeProvider attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+>
         <Sheet>
   <SheetTrigger style={{ padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>Open</SheetTrigger>
   <SheetContent>
@@ -59,8 +84,23 @@ export default function RootLayout({
         {/* <div style={{ backgroundColor: '#333', color: 'white', padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>
           Header Bar
         </div> */}
+        <GameOfLifeCanvas />
+
+
+        <div className=" m-20">
+<Avatar className="w-20 h-20">
+  <AvatarImage src="https://github.com/shadcn.png" />
+  <AvatarFallback>1</AvatarFallback>
+</Avatar>
+<CardTitle>
+      
+      
+      Card Title</CardTitle>
+
+        </div>
+
         {children}
-        
+        </ThemeProvider>
       </body>
     </html>
   );
