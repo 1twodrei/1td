@@ -4,7 +4,7 @@ import "./globals.css";
 
 import GameOfLifeCanvas from "@/components/GameOfLifeCanvas";
 
-import { ThemeProvider } from "@/app/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider"
 
 import {
   Sheet,
@@ -69,18 +69,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
 >
-        <Sheet>
-  <SheetTrigger style={{ padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>Open</SheetTrigger>
-  <SheetContent>
-    <SheetHeader>
-      <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
+      
         {/* <div style={{ backgroundColor: '#333', color: 'white', padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>
           Header Bar
         </div> */}
@@ -100,6 +89,20 @@ export default function RootLayout({
         </div>
 
         {children}
+        <div>
+        <Sheet>
+  <SheetTrigger style={{ padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>Open</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+</div>
         </ThemeProvider>
       </body>
     </html>
