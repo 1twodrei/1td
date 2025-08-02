@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import GameOfLifeCanvas from "@/components/GameOfLifeCanvas";
+import { Button } from "@/components/ui/button"
+
 
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -91,7 +93,20 @@ export default function RootLayout({
         {children}
         <div>
         <Sheet>
-  <SheetTrigger style={{ padding: '10px', textAlign: 'center', position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>Open</SheetTrigger>
+<SheetTrigger
+  style={{
+    padding: '10px',
+    textAlign: 'center',
+    position: 'fixed',
+    bottom: '5%',
+    left: 0,
+    width: '100%',
+    zIndex: 100,
+  }}
+  className=""
+>
+  <Button variant="secondary">Contact Me</Button>
+</SheetTrigger>
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
